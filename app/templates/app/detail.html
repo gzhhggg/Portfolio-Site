@@ -1,0 +1,93 @@
+{% extends "app/base.html" %} {% block content %}
+
+<h3 class="mb-4">{{ work_data.title }}</h3>
+<div class="card top mb-4">
+  <img src="{{ work_data.image.url }}" alt="" />
+</div>
+
+<div class="row">
+  <div class="col-sm-4 mb-4">
+    <h4 class="mb-3">INFORMATION</h4>
+    <!-- 言語 -->
+    {% if work_data.language %}
+    <p>
+        <i class="fas fa-language mr-2"></i>
+        <span class="font-weight-bolder">言語 : </span>
+        {{ work_data.language }}
+    </p>
+    <hr />
+    {% endif %}
+    <!-- OS -->
+    {% if work_data.os %}
+    <p>
+        <i class="fas fa-laptop-code mr-2"></i>
+        <span class="font-weight-bolder">OS : </span>
+        {{ work_data.os }}
+    </p>
+    <hr />
+    {% endif %}
+    <!-- データベース -->
+    {% if work_data.database %}
+    <p>
+        <i class="fas fa-database mr-2"></i>
+        <span class="font-weight-bolder">データベース : </span>
+        {{ work_data.database }}
+    </p>
+    <hr />
+    {% endif %}
+    <!-- フレームワーク -->
+    {% if work_data.framework %}
+    <p>
+        <i class="fas fa-archway mr-2"></i>
+        <span class="font-weight-bolder">フレームワーク : </span>
+        {{ work_data.framework }}
+    </p>
+    <hr />
+    {% endif %}
+    <!-- クラウドサービス -->
+    {% if work_data.cloud %}
+    <p>
+        <i class="fas fa-cloud mr-2"></i>
+        <span class="font-weight-bolder">クラウドサービス : </span>
+        {{ work_data.cloud }}
+    </p>
+    <hr />
+    {% endif %}
+    <!-- デプロイ先 -->
+    {% if work_data.deploy %}
+    <p>
+        <i class="fab fa-chrome mr-2"></i>
+        <span class="font-weight-bolder">URL : </span>
+        <a class="link-color" href="{{ work_data.deploy }}" target="_blank">Link</a>
+    </p>
+    <hr />
+    {% endif %}
+    <!-- Github -->
+    <p>
+      <i class="fab fa-github mr-2"></i>
+      <span class="font-weight-bolder">GITHUB : </span>
+      {% if work_data.url %}
+      <a class="link-color" href="{{ work_data.url }}" target="_blank">Link</a>
+      {% else %} Private {% endif %}
+    </p>
+    <hr />
+    <!-- 作成日 -->
+    <p>
+      <i class="far fa-calendar-alt mr-2"></i>
+      <span class="font-weight-bolder">CREATED : </span>
+      {{ work_data.created }}
+    </p>
+    <hr />
+  </div>
+    <!-- 説明 -->
+    <div class="col-sm-8 mb-5">
+        <!-- 解説 -->
+        <h4 class="mb-3">PROJECT DESCRIPTION</h4>
+        <p class="mb-4">{{ work_data.description|linebreaksbr }}</p>
+        <!-- 工夫点 -->
+        <h4 class="mb-3">PROJECT POINT</h4>
+        <p class="mb-4">{{ work_data.point|linebreaksbr }}</p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends "app/base.html" %} {% block content %}
+
+<h3 class="mb-4">Profile</h3>
+<div class="mb-5">
+  <div class="row">
+    <div class="col-md-8">
+      <p>{{ profile_data.introduction|linebreaksbr }}</p>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center px-5 py-4">
+        <div class="avatar mb-3">
+          <img
+            class="card-img-top rounded-circle"
+            src="{{ profile_data.subimage.url }}"
+            alt=""
+          />
+        </div>
+        <h5 class="font-weight-bolder">{{ profile_data.name }}</h5>
+        <p class="mb-3 small text-center">
+          {{ profile_data.job|linebreaksbr }}
+        </p>
+        <div class="d-flex justify-content-around">
+          {% if profile_data.github %}
+          <a href="{{ profile_data.github }}" target="_blank"
+            ><i class="fab fa-github fa-lg rounded btn-dark icon"></i
+          ></a>
+          {% endif %} {% if profile_data.twitter %}
+          <a href="{{ profile_data.twitter }}" target="_blank"
+            ><i class="fab fa-twitter fa-lg rounded btn-primary icon"></i
+          ></a>
+          {% endif %} {% if profile_data.linkedin %}
+          <a href="{{ profile_data.linkedin }}" target="_blank"
+            ><i class="fab fa-linkedin-in fa-lg rounded btn-info icon"></i
+          ></a>
+          {% endif %} {% if profile_data.facebook %}
+          <a href="{{ profile_data.facebook }}" target="_blank"
+            ><i class="fab fa-facebook-f fa-lg rounded btn-primary icon"></i
+          ></a>
+          {% endif %} {% if profile_data.instagram %}
+          <a href="{{ profile_data.instagram }}" target="_blank"
+            ><i class="fab fa-instagram fa-lg rounded btn-danger icon"></i
+          ></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 職歴 -->
+
+<h3 class="mb-4">Experience</h3>
+<div class="mb-5">
+  {% for experience in experience_data %}
+  <div class="d-flex justify-content-between">
+    <h5>
+      {{ experience.occupation }}<span class="small text-secondary">
+        - {{ experience.company }}</span
+      >
+    </h5>
+    <p class="mb-1">{{ experience.period }}</p>
+  </div>
+  <p class="mb-1">{{ experience.description|linebreaksbr }}</p>
+  <p>{{ experience.place }}</p>
+  <hr />
+  {% endfor %}
+</div>
+
+<h3 class="mb-4">Education</h3>
+<div class="mb-5">
+  {% for education in education_data %}
+  <div class="d-flex justify-content-between">
+    <h5>
+      {{ education.course }}<span class="small text-secondary">
+        - {{ education.school }}</span
+      >
+    </h5>
+    <p class="mb-1">{{ education.period }}</p>
+  </div>
+  <p>{{ education.place }}</p>
+  <hr />
+  {% endfor %}
+</div>
+
+<!-- スキル一覧 -->
+
+<!-- Language -->
+<h3 class="mb-4">
+    <i class="fas fa-language mr-2"></i>
+    <span class="font-weight-bolder">言語</span>
+</h3>
+<div class="mb-5">
+  <div class="row">
+    {% for Language in Language_data %}
+    <div class="col-6 col-md-3">
+      <h5 class="mb-0">
+        {{ Language.name }}<span class="small text-secondary"> - {{ Language.level }}</span>
+      </h5>
+      <div class="d-flex flex-row">
+        <div class="star-rating">
+          <div class="star-rating-front color-language" style="width: {{ Language.percentage }}%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr />
+<!-- OS -->
+<h3 class="mb-4">
+    <i class="fas fa-laptop-code mr-2"></i>
+    <span class="font-weight-bolder">OS</span>
+</h3>
+<div class="mb-5">
+  <div class="row">
+    {% for OS in OS_data %}
+    <div class="col-6 col-md-3">
+      <h5 class="mb-0">
+        {{ OS.name }}<span class="small text-secondary"> - {{ OS.level }}</span>
+      </h5>
+      <div class="d-flex flex-row">
+        <div class="star-rating">
+          <div class="star-rating-front color-OS" style="width: {{ OS.percentage }}%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr />
+<!-- Database -->
+<h3 class="mb-4">
+    <i class="fas fa-database mr-2"></i>
+    <span class="font-weight-bolder">データベース</span>
+</h3>
+<div class="mb-5">
+  <div class="row">
+    {% for Database in Database_data %}
+    <div class="col-6 col-md-3">
+      <h5 class="mb-0">
+        {{ Database.name }}<span class="small text-secondary"> - {{ Database.level }}</span>
+      </h5>
+      <div class="d-flex flex-row">
+        <div class="star-rating">
+          <div class="star-rating-front color-Database" style="width: {{ Database.percentage }}%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr />
+<!-- Framework -->
+<h3 class="mb-4">
+    <i class="fas fa-archway mr-2"></i>
+    <span class="font-weight-bolder">フレームワーク</span>
+</h3>
+<div class="mb-5">
+  <div class="row">
+    {% for Framework in Framework_data %}
+    <div class="col-6 col-md-3">
+      <h5 class="mb-0">
+        {{ Framework.name }}<span class="small text-secondary"> - {{ Framework.level }}</span>
+      </h5>
+      <div class="d-flex flex-row">
+        <div class="star-rating">
+          <div class="star-rating-front color-Framework" style="width: {{ Framework.percentage }}%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr />
+<!-- Cloud -->
+<h3 class="mb-4">
+    <i class="fas fa-cloud mr-2"></i>
+    <span class="font-weight-bolder">クラウドサービス</span>
+</h3>
+<div class="mb-5">
+  <div class="row">
+    {% for Cloud in Cloud_data %}
+    <div class="col-6 col-md-3">
+      <h5 class="mb-0">
+        {{ Cloud.name }}<span class="small text-secondary"> - {{ Cloud.level }}</span>
+      </h5>
+      <div class="d-flex flex-row">
+        <div class="star-rating">
+          <div class="star-rating-front color-Cloud" style="width: {{ Cloud.percentage }}%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

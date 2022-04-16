@@ -29,6 +29,10 @@ Python ライブラリ
 
 ※requriements-dev.txtをご確認ください  
 
+フレームワーク  
+* Django  
+* Bootstrap  
+
 データベース  
 * PostgreSQL  
 
